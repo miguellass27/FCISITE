@@ -19,12 +19,12 @@ let edicoes = {
             confrontoDestaque: {
                 fase: "Fase 1",
                 status: "em_breve",
-                timeA: { nome: "Pitoco", logo: "logos/Pitoco.png" },
+                timeA: { nome: "Pitoco", logo: getLogo("Pitoco") },
                 placarA: 0,
-                timeB: { nome: "Cedru", logo: "logos/Cedru.png" },
+                timeB: { nome: "Cedru", logo: getLogo("Cedru") },
                 placarB: 0
             },
-            competidorDestaque: { nome: "Pitoco", logo: "logos/Pitoco.png" },
+            competidorDestaque: { nome: "Pitoco", logo: getLogo("Pitoco") },
             ultimoCampeao: { nome: "Nenhum", titulos: 0 },
             maiorCampeao: { nome: "Nenhum", titulos: 0 },
             ultimaAtualizacao: "02/01/2026"
@@ -46,17 +46,17 @@ let edicoes = {
         ],
         chaveamento: {
             quartas: [
-                { a: "A definir", logoA: "logos/default.png", b: "A definir", logoB: "logos/default.png", placarA: "-", placarB: "-" },
-                { a: "A definir", logoA: "logos/default.png", b: "A definir", logoB: "logos/default.png", placarA: "-", placarB: "-" },
-                { a: "A definir", logoA: "logos/default.png", b: "A definir", logoB: "logos/default.png", placarA: "-", placarB: "-" },
-                { a: "A definir", logoA: "logos/default.png", b: "Shiro", logoB: "logos/Shiro.png", placarA: "-", placarB: "-" }
+                { a: "A definir", logoA: getLogo("default"), b: "A definir", logoB: getLogo("default"), placarA: "-", placarB: "-" },
+                { a: "A definir", logoA: getLogo("default"), b: "A definir", logoB: getLogo("default"), placarA: "-", placarB: "-" },
+                { a: "A definir", logoA: getLogo("default"), b: "A definir", logoB: getLogo("default"), placarA: "-", placarB: "-" },
+                { a: "A definir", logoA: getLogo("default"), b: "Shiro", logoB: getLogo("Pitoco"), placarA: "-", placarB: "-" }
             ],
             semifinal: [
-                { a:"WQ1", logoA:"logos/default.png", b:"WQ2", logoB:"logos/default.png", placarA:"-", placarB:"-" },
-                { a:"WQ3", logoA:"logos/default.png", b:"WQ4", logoB:"logos/default.png", placarA:"-", placarB:"-" }
+                { a:"WQ1", logoA: getLogo("default"), b:"WQ2", logoB:getLogo("default"), placarA:"-", placarB:"-" },
+                { a:"WQ3", logoA: getLogo("default"), b:"WQ4", logoB:getLogo("default"), placarA:"-", placarB:"-" }
             ],
             final: [
-                { a:"WS1", logoA:"logos/default.png", b:"WS2", logoB:"logos/default.png", placarA:"-", placarB:"-" }
+                { a:"WS1", logoA: getLogo("default"), b:"WS2", logoB: getLogo("default"), placarA:"-", placarB:"-" }
             ]
         }
     },
@@ -189,14 +189,37 @@ function renderChaveamento(){
     `;
 }
 
-function cardJogo(j){
-    return `
-    <div class="card-chave">
-        <div class="linha">${j.a} <img src="${j.logoA}"></div>
-        <div class="placar-chave">${j.placarA} : ${j.placarB}</div>
-        <div class="linha">${j.b} <img src="${j.logoB}"></div>
-    </div>`;
+/* ===== MAPA DE LOGOS (ANTI-ERRO) ===== */
+const logos = {
+    Campeonato: "Logos/CAMPEONATOLOGO.png",
+    Catarina: "logos/Catarina.png",
+    Catarina: "Logos/Cedru.png",
+    FIA: "Logos/FIA.png",
+    Meowflix: "Logos/Meowflix.png",
+    Jaonez: "Logos/Jaonez.png",
+    Iriz: "Logos/Iriz.png",
+    Catarina: "Logos/Catarina.png",
+    Mclovin: "Logos/Mclovin.png",
+    Shiro: "Logos/Shiro.png",
+    Pitoco: "Logos/Pitoco.png",
+    default: "Logos/default.png"
+};
+
+function getLogo(nome) {
+    return logos[nome] || logos.default;
 }
+
+function jogo(a, b, status = "em_breve", placarA = 0, placarB = 0, penal = "") {
+    return {
+        timeA: { nome: a, logo: getLogo(a) },
+        placarA,
+        timeB: { nome: b, logo: getLogo(b) },
+        placarB,
+        status,
+        penal
+    };
+}
+
 
 
 //COPA /\
@@ -211,15 +234,15 @@ let campeonatoEdicoes = {
         confrontoDestaque: {
             rodada: "Rodada 1",
             status: "adefinir", // adefinir | em_breve | em_andamento | encerrado
-            timeA: { nome: "A definir", logo: "logos/default.png" },
+            timeA: { nome: "A definir", logo: getLogo("default") },
             placarA: 0,
-            timeB: { nome: "A definir", logo: "logos/default.png" },
+            timeB: { nome: "A definir", logo: getLogo("default") },
             placarB: 0
         },
 
         competidorDestaque: {
             nome: "Pitoco",
-            logo: "logos/Pitoco.png",
+            logo: getLogo("Pitoco"),
             pontos: 0,
             saldo: 0
         },
