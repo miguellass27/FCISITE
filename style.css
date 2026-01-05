@@ -18,7 +18,9 @@ body {
     background: #020617;
 }
 
-.topo h1 { font-size: 18px; }
+.topo h1 {
+    font-size: 18px;
+}
 
 button {
     padding: 10px;
@@ -27,24 +29,46 @@ button {
     cursor: pointer;
 }
 
-main { padding: 16px; }
+main {
+    padding: 16px;
+}
 
-.abas { display: flex; gap: 10px; margin-bottom: 16px; }
-.abas button.ativo { background: #2563eb; color: #fff; }
-
-/* Cabeçalho Copa */
-.copa-topo {
+.abas {
     display: flex;
-    align-items: center;
     gap: 10px;
+    margin-bottom: 16px;
+}
+
+.abas button.ativo {
+    background: #2563eb;
+    color: #fff;
+}
+
+/* ===== CABEÇALHO COPA ===== */
+.copa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 12px;
 }
 
-.copa-logo { width: 40px; height: 40px; object-fit: contain; }
+.copa-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-select { padding: 6px; border-radius: 6px; background: #fff; color: #111; }
+.copa-logo {
+    width: 40px;
+    height: 40px;
+}
 
-/* CARDS */
+.copa-edicao select {
+    padding: 6px;
+    border-radius: 6px;
+}
+
+/* ===== CARDS ===== */
 .card {
     background: #ffffff;
     color: #111;
@@ -57,22 +81,33 @@ select { padding: 6px; border-radius: 6px; background: #fff; color: #111; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 6px;
+    margin: 6px 0;
 }
 
 .time {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 
-.logo {
+.time img {
     width: 36px;
     height: 36px;
     object-fit: contain;
 }
 
+.time.visitante img {
+    order: 2; /* visitante vai depois do nome */
+}
+
 .placar-area {
+    text-align: center;
+}
+
+.placar-area .placar, .placar-area .placar-agregado {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 2px;
     text-align: center;
 }
 
@@ -80,28 +115,27 @@ select { padding: 6px; border-radius: 6px; background: #fff; color: #111; }
     font-size: 12px;
 }
 
-.pontos-saldo {
-    font-size: 14px;
-    margin-left: 6px;
-    color: #2563eb;
-    font-weight: bold;
-}
-
-
 .status-breve { color: orange; }
 .status-andamento { color: red; }
 .status-encerrado { color: gray; }
-.status-definindo { color: #fff; }
 
-/* CHAVEAMENTO */
+/* ===== CHAVEAMENTO ===== */
 .chave-grid {
     display: flex;
     gap: 60px;
     align-items: center;
 }
 
-.coluna { display: flex; flex-direction: column; gap: 24px; position: relative; }
-.coluna h3 { text-align: center; }
+.coluna {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+}
+
+.coluna h3 {
+    text-align: center;
+}
 
 .card-chave {
     background: #ffffff;
@@ -118,11 +152,19 @@ select { padding: 6px; border-radius: 6px; background: #fff; color: #111; }
     gap: 10px;
 }
 
-.linha img { width: 40px; height: 40px; object-fit: contain; }
+.linha img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
 
-.placar-chave { text-align: center; font-weight: bold; margin: 6px 0; }
+.placar-chave {
+    text-align: center;
+    font-weight: bold;
+    margin: 6px 0;
+}
 
-/* LINHAS ENTRE CARDS */
+/* linhas */
 .coluna.quartas .card-chave::after,
 .coluna.semifinal .card-chave::after {
     content: "";
@@ -156,6 +198,12 @@ select { padding: 6px; border-radius: 6px; background: #fff; color: #111; }
     background: #fff;
 }
 
+.pontos-saldo {
+    font-size: 14px;
+    margin-left: 6px;
+    color: #2563eb;
+    font-weight: bold;
+}
 /* =========================
    TABELA – CLASSIFICAÇÃO
 ========================= */
@@ -194,41 +242,7 @@ select { padding: 6px; border-radius: 6px; background: #fff; color: #111; }
     background: rgba(34, 197, 94, 0.2);
 }
 
-/* ⚪ 7º lugar – preparado */
-.tabela-classificacao tr.repescagem {
-    background: transparent;
-}
-
 /* Hover só pra ficar bonito */
 .tabela-classificacao tbody tr:hover {
     background: rgba(0, 0, 0, 0.05);
-}
-
-/* Ranking FCI*/
-
-.ranking-tabela {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    color: #111;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.ranking-tabela th,
-.ranking-tabela td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.ranking-tabela th {
-    background: #2563eb;
-    color: #fff;
-    font-size: 14px;
-}
-
-.ranking-tabela td:nth-child(2) {
-    text-align: left;
-    font-weight: bold;
 }
