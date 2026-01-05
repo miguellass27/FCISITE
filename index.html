@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>FCI SITE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+    <button id="btn-voltar" onclick="voltar()" hidden>←</button>
+    <h1>FCI SITE</h1>
+</header>
+
+<main id="home">
+    <p>Selecione a competição para você visualizar</p>
+    <button onclick="abrirRanking()">Ranking FCI</button>
+    <button onclick="abrirCopa()">Copa dos Amigos</button>
+    <button onclick="abrirCampeonato()">Campeonato dos Amigos</button>
+</main>
+
+<main id="ranking" hidden>
+    <h2>Ranking FCI</h2>
+</main>
+
+<main id="copa" hidden>
+
+    <!-- CABEÇALHO DA COPA -->
+    <div class="copa-header">
+        <h2>COPA DOS AMIGOS <img src="logos/COPALOGO.png" alt="Logo Copa" class="copa-logo"></h2>
+        <div class="copa-edicao">
+            <span>Edição: </span>
+            <select id="select-edicao" onchange="mudarEdicao()">
+                <option value="1" selected>Padrão</option>
+                <option value="2">Segunda Edição</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="abas">
+        <button onclick="abaCopa('geral')" class="ativo">Visão Geral</button>
+        <button onclick="abaCopa('confrontos')">Confrontos</button>
+        <button onclick="abaCopa('chaveamento')">Chaveamento</button>
+    </div>
+
+    <section id="copa-geral"></section>
+    <section id="copa-confrontos" hidden></section>
+    <section id="copa-chaveamento" class="chaveamento" hidden></section>
+</main>
+
+<main id="campeonato" hidden>
+
+    <!-- Cabeçalho do Campeonato -->
+    <div class="copa-topo">
+        <img src="logos/CAMPEONATOLOGO.png" class="copa-logo">
+        <h2>CAMPEONATO DOS AMIGOS</h2>
+
+        <select id="select-edicao-campeonato" onchange="mudarEdicaoCampeonato()">
+            <option value="edicao1" selected>Edição Atual</option>
+            <option value="edicao2">Segunda Edição</option>
+        </select>
+    </div>
+
+    <!-- Abas -->
+    <div class="abas">
+        <button onclick="abaCampeonato('geral')" class="ativo">Visão Geral</button>
+        <button onclick="abaCampeonato('confrontos')">Confrontos</button>
+        <button onclick="abaCampeonato('classificacao')">Classificação</button>
+    </div>
+
+    <!-- Conteúdos -->
+    <section id="campeonato-geral"></section>
+    <section id="campeonato-confrontos" hidden></section>
+    <section id="campeonato-classificacao" hidden></section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
